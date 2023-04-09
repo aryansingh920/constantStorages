@@ -19,7 +19,7 @@
     <h4>Update Link</h4>
     <hr/>
     <form method="POST" action="update">
-
+        <input class="d-none" value=<%= id %> name="adr"/> 
         <% if (ip) { %>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Enter Link as <code>http://12.43.65.25:3000</code></label>

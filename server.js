@@ -42,6 +42,7 @@ app.get("/",(req,res)=>{
 
 app.get("/updateLink",(req,res)=>{
     res.render("update",{
+        id:req.query.id,
         ip:true,
         port:false,
         protocol:false
@@ -60,7 +61,7 @@ app.get("/getLink",async(req,res)=>{
 })
 
 app.post("/update",async(req,res)=>{
-    const linkFind = await link.findOneAndUpdate({_id:req.query.id},{link:req.body.ip}).exec().then((r)=>{
+    const linkFind = await link.findOneAndUpdate({_id:req.body.adr},{link:req.body.ip}).exec().then((r)=>{
         res.json({"msg":"Updated Link"})
     }).catch((e)=>{
         res.json({
