@@ -49,22 +49,23 @@ app.get("/updateLink",(req,res)=>{
 })
 
 app.get("/getLink",async(req,res)=>{
-    const linkG = await link.findOne({_id:"6432fdd76891510fa8699ac5"}).exec().then((r)=>{
+    const linkG = await link.findOne({_id:req.query.id}).exec().then((r)=>{
         return(r)
     }).catch((err)=>{
         return(err)
     })
-    // console.log(linkG)
     res.json({
         link:linkG.link
     })
 })
 
 app.post("/update",async(req,res)=>{
-    const linkFind = await link.findOneAndUpdate({_id:"6432fdd76891510fa8699ac5"},{link:req.body.ip}).exec().then((r)=>{
-        res.json("msg","Updated Link")
+    const linkFind = await link.findOneAndUpdate({_id:req.query.id},{link:req.body.ip}).exec().then((r)=>{
+        res.json({"msg":"Updated Link"})
     }).catch((e)=>{
-        res.json(e)
+        res.json({
+            "error":e
+        })
     })
 })
 
