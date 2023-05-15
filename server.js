@@ -19,15 +19,19 @@ mongoose.connect(process.env.URI).then(() => {
   console.log(err + ' : error connecting to cluster')
 });
 
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.set("view engine", "ejs");
-app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
+// app.use(bodyParser.json());
+// app.use(
+//   bodyParser.urlencoded({
+//     extended: true,
+//   })
+// );
 
 
 
